@@ -1,0 +1,27 @@
+name: Report a problem
+description: Something did not work, or looked wrong
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+  - type: input
+    id: version
+    attributes:
+      label: Which version?
+      description: The number on the page you downloaded from, for example 0.1.0.
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version
+  - type: textarea
+    id: anything-else
+    attributes:
+      label: Anything else
+      description: Screenshots help.

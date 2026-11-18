@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="description" content="A Mac app for building software with AI agents.">
+<meta name="color-scheme" content="light">
+<title>The Vibe Machine</title>
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<style>
+/* Values from BrandBook/tokens.json. Sizes scaled up from the A4 sheet for a screen, ratios kept. */
+:root {
+  color-scheme: light;
+  --paper: #F3F1EA;
+  --ink: #1B1B19;
+  --soft: #6F6D66;
+  --hairline: rgba(27,27,25,0.22);
+  --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --body-size: 16px;
+  --body-line: 1.42;
+  --small-size: 13.6px;
+  --small-line: 1.38;
+  --folio-size: 12.4px;
+  --text-column-start: 38%;
+  --step-column: 30px;
+  --rule-strong: 1px;
+}
+* { box-sizing: border-box; }
+html { background: var(--paper); }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: var(--body-size);
+  line-height: var(--body-line);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+.page { max-width: 1040px; margin: 0 auto; padding: 40px 56px 48px; }
+h1, h2, p, ol { margin: 0; }
+h1, h2 { font-size: inherit; font-weight: 700; }
+p + p { margin-top: .8em; }
+a { color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+b { font-weight: 700; }
+.small { font-size: var(--small-size); line-height: var(--small-line); }
+.soft { color: var(--soft); }
+
+/* Top strip */
+.strip { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.mark { display: flex; align-items: center; gap: 9px; font-weight: 700; font-size: 17px; letter-spacing: 0.01em; color: var(--ink); text-decoration: none; }
+.mark img { width: 30px; height: 22px; flex: none; display: block; }
+
+/* The grid: a label column and a text column */
+.row { display: grid; grid-template-columns: var(--text-column-start) 1fr; }
+.row > .label { padding-right: 24px; font-size: var(--small-size); line-height: var(--small-line); color: var(--soft); font-weight: 400; }
+.block { margin-top: 64px; }
+.block > .label, .block > .body { border-top: var(--rule-strong) solid var(--ink); padding-top: 8px; }
+
+/* Opening */
+.opening { margin-top: 96px; }
+.opening h1 { font-size: 24px; line-height: 1.18; letter-spacing: -0.02em; max-width: 22em; }
+.opening .lead { margin-top: 16px; max-width: 34em; }
+.download { margin-top: 28px; }
+.button {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 700;
+  text-decoration: none;
+  padding: 11px 20px 12px;
+  border-radius: 2px;
+}
+.button:hover { background: #33322F; }
+.button:focus-visible, a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.download .small { margin-top: 10px; }
+.picture { margin: 48px 0 0; }
+.picture img { display: block; width: 100%; max-width: 560px; height: auto; }
+
+/* Numbered lists, as steps in a guide */
+ol.steps { list-style: none; padding: 0; counter-reset: s; max-width: 36em; }
+ol.steps li { counter-increment: s; display: grid; grid-template-columns: var(--step-column) 1fr; padding: 8px 0 9px; border-top: 1px solid var(--hairline); }
+ol.steps li:first-child { border-top: 0; padding-top: 0; }
+ol.steps li::before { content: counter(s); font-weight: 700; }
+.body > p { max-width: 36em; }
+
+.links { margin-top: 14px; display: grid; gap: 6px; }
+.links .small { margin-left: 8px; }
+
+/* Foot */
+.foot { margin-top: 96px; padding-top: 8px; border-top: 1px solid var(--hairline); font-size: var(--folio-size); color: var(--soft); }
+
+@media (max-width: 720px) {
+  .page { padding: 20px 16px 32px; }
+  .row { grid-template-columns: 1fr; }
+  .row > .label { padding-right: 0; }
+  .opening { margin-top: 48px; }
+  .opening h1 { font-size: 21px; }
+  .picture { margin-top: 36px; }
+  .block { margin-top: 44px; }
+  .block > .body { border-top: 0; padding-top: 6px; }
+  .opening .label { display: none; }
+  .foot { margin-top: 56px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="strip">
+    <span class="mark"><img src="assets/mark.svg" alt="">Vibe Machine</span>
+    <span class="small soft">Early copy, for friends</span>
+  </header>
+
+  <main>
+    <section class="row opening">
+      <div class="label"></div>
+      <div>
+        <h1>A Mac app for building software with AI agents.</h1>
+        <p class="lead">You install one app and open it. Agents do most of the work. You steer them with small decisions: which piece of work comes next, which answer is right, which result to keep.</p>
+        <div class="download">
+          <a class="button" href="https://github.com/vibe-machine/vibe-machine/releases/latest/download/VibeMachine.dmg">Download for Mac</a>
+          <p class="small soft">Apple silicon Mac · macOS 26 or later · about 350 MB</p>
+        </div>
+        <figure class="picture">
+          <img src="assets/machine.jpg" width="1400" height="623" alt="The Vibe Machine drawn as a radio front panel: a large dial with an orange pointer, and a tuning scale.">
+        </figure>
+      </div>
+    </section>
+
+    <section class="row block">
+      <h2 class="label">What you do with it</h2>
+      <div class="body">
+        <ol class="steps">
+          <li><span><b>Ask a question.</b> In Lingo Studio you ask what you want your data to answer. It builds a model of your data (an ontology) that answers the question, and the app checks the answer.</span></li>
+          <li><span><b>Build on it.</b> Plan the work, design it, and supervise the agents that write the code.</span></li>
+          <li><span><b>Show it.</b> Flex records a demo video of what you built.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="row block">
+      <h2 class="label">Install</h2>
+      <div class="body">
+        <ol class="steps">
+          <li><span>Download the disk image, <b>VibeMachine.dmg</b>, and open it.</span></li>
+          <li><span>Drag the dial into the ring on the machine. This copies the app to your Applications folder.</span></li>
+          <li><span>In Applications, open <b>One</b>. That is the Vibe Machine; the file’s name has not caught up yet.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="row block">
+      <h2 class="label">What stays on your Mac</h2>
+      <div class="body">
+        <p>The app and your data stay on your own Mac. What leaves it: requests to your AI provider, packages you publish to GitHub, and videos you upload to YouTube.</p>
+      </div>
+    </section>
+
+    <section class="row block">
+      <h2 class="label">Something wrong</h2>
+      <div class="body">
+        <p>This is an early copy and it has rough edges. Say what you saw and what you expected.</p>
+        <div class="links">
+          <div><a href="https://github.com/vibe-machine/vibe-machine/issues/new/choose">Report a problem</a><span class="small soft">Needs a GitHub account.</span></div>
+          <div><a href="https://github.com/vibe-machine/vibe-machine/releases">Earlier versions</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">Vibe Machines · 2026</footer>
+
+</div>
+</body>
+</html>
