@@ -4,176 +4,273 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<meta name="description" content="A Mac app for building software with AI agents.">
+<meta name="description" content="Data that knows what it means. An operational ontology on your own Mac, built with AI agents.">
 <meta name="color-scheme" content="light">
 <title>The Vibe Machine</title>
 <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <style>
-/* Values from BrandBook/tokens.json. Sizes scaled up from the A4 sheet for a screen, ratios kept. */
-:root {
-  color-scheme: light;
-  --paper: #F3F1EA;
-  --ink: #1B1B19;
-  --soft: #6F6D66;
-  --hairline: rgba(27,27,25,0.22);
-  --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --body-size: 16px;
-  --body-line: 1.42;
-  --small-size: 13.6px;
-  --small-line: 1.38;
-  --folio-size: 12.4px;
-  --text-column-start: 38%;
-  --step-column: 30px;
-  --rule-strong: 1px;
-}
-* { box-sizing: border-box; }
-html { background: var(--paper); }
-body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--font);
-  font-size: var(--body-size);
-  line-height: var(--body-line);
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: 100%;
-}
-.page { max-width: 1040px; margin: 0 auto; padding: 40px 56px 48px; }
-h1, h2, p, ol { margin: 0; }
-h1, h2 { font-size: inherit; font-weight: 700; }
-p + p { margin-top: .8em; }
-a { color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: 3px; }
-b { font-weight: 700; }
-.small { font-size: var(--small-size); line-height: var(--small-line); }
-.soft { color: var(--soft); }
+:root{--paper:#F3F1EA;--ink:#1B1B19;--soft:#6F6D66;--hair:rgba(27,27,25,.22);--desk:#C9C7C1;
+--plate:#B9B3A9;--panel:#E4E1D8;--signal:#E8501E;--font:"Helvetica Neue",Helvetica,Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:16px;
+line-height:1.45;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,p,ol,ul,dl,dd,dt,figure{margin:0;padding:0;font-weight:400;font-size:inherit}
+a{color:inherit}
+b,strong{font-weight:700}
+.wrap{width:1280px;margin:0 auto;padding:0 56px}
+.bar{display:flex;align-items:center;justify-content:space-between;padding-top:28px}
+.mark{display:flex;align-items:center;gap:9px;font-weight:700;font-size:17px;letter-spacing:.01em}
+.mark img{width:30px;height:22px;display:block}
+.nav{display:flex;gap:30px;font-size:14px}
+.nav a{text-decoration:none}
+.btn{display:inline-block;background:var(--ink);color:var(--paper);font-weight:700;font-size:16px;
+text-decoration:none;padding:13px 22px 14px;border-radius:2px;white-space:nowrap}
+.btn.ghost{background:none;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.acts{display:flex;gap:12px;align-items:center}
+.meta{font-size:13px;color:var(--soft);line-height:1.4}
+.lead{font-size:19px;line-height:1.4;letter-spacing:-.005em}
+.dot{color:var(--signal)}
+.row{display:grid;grid-template-columns:38% 1fr}
+.row>.label{font-size:13.5px;color:var(--soft);padding-right:24px}
+.ruled>*{border-top:1px solid var(--ink);padding-top:9px}
+.field{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--ink);
+padding:8px 0 9px;max-width:400px;margin-top:18px}
+.field span{color:var(--soft)}
+.field b{font-size:15px}
+.lnk{font-weight:700;text-underline-offset:4px;text-decoration-thickness:1px}
+.spec{display:grid;grid-template-columns:150px 1fr;font-size:15px}
+.spec dt,.spec dd{padding:9px 0 10px;border-top:1px solid var(--hair)}
+.spec dt{color:var(--soft)}
+.spec dt:first-of-type,.spec dt:first-of-type+dd{border-top:0;padding-top:0}
+.wide>.label{font-size:13.5px;color:var(--soft);border-top:1px solid var(--ink);padding-top:9px;margin-bottom:28px}
+.foot{margin-top:110px;padding:10px 0 40px;border-top:1px solid var(--hair);font-size:12.5px;color:var(--soft);
+display:flex;justify-content:space-between}
+.foot span+span a{margin-left:22px;text-decoration:none}
+.cap{font-size:13.5px;color:var(--soft);margin-top:14px}
+.cap b{color:var(--ink)}
+h3.h{font-weight:700;font-size:16px}
 
-/* Top strip */
-.strip { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.mark { display: flex; align-items: center; gap: 9px; font-weight: 700; font-size: 17px; letter-spacing: 0.01em; color: var(--ink); text-decoration: none; }
-.mark img { width: 30px; height: 22px; flex: none; display: block; }
 
-/* The grid: a label column and a text column */
-.row { display: grid; grid-template-columns: var(--text-column-start) 1fr; }
-.row > .label { padding-right: 24px; font-size: var(--small-size); line-height: var(--small-line); color: var(--soft); font-weight: 400; }
-.block { margin-top: 64px; }
-.block > .label, .block > .body { border-top: var(--rule-strong) solid var(--ink); padding-top: 8px; }
+html,body{overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+.wrap{width:auto;max-width:1280px;padding:0 clamp(20px,4.4vw,56px)}
+.bar{padding-top:clamp(18px,2.2vw,28px)}
+.row{grid-template-columns:38% minmax(0,1fr)}
+.row>*,.steer>*{min-width:0}
+h2.big{font-size:clamp(30px,3.6vw,46px);line-height:1.02;letter-spacing:-.035em;font-weight:700;padding-right:40px}
+.lede{font-size:clamp(17px,1.5vw,19px);line-height:1.4;max-width:31em}
+.lede+.lede{margin-top:.8em}
+.sec{margin-top:clamp(72px,8.8vw,112px)}
+.btn:hover{background:#33322F}
+.btn.ghost:hover{background:rgba(27,27,25,.06)}
+a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 
 /* Opening */
-.opening { margin-top: 96px; }
-.opening h1 { font-size: 24px; line-height: 1.18; letter-spacing: -0.02em; max-width: 22em; }
-.opening .lead { margin-top: 16px; max-width: 34em; }
-.download { margin-top: 28px; }
-.button {
-  display: inline-block;
-  background: var(--ink);
-  color: var(--paper);
-  font-weight: 700;
-  text-decoration: none;
-  padding: 11px 20px 12px;
-  border-radius: 2px;
-}
-.button:hover { background: #33322F; }
-.button:focus-visible, a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-.download .small { margin-top: 10px; }
-.picture { margin: 48px 0 0; }
-.picture img { display: block; width: 100%; max-width: 560px; height: auto; }
+.kick{margin-top:clamp(56px,7.2vw,92px);font-size:15px;font-weight:700}
+.hero h1{font-size:clamp(46px,8.15vw,104px);line-height:.95;letter-spacing:-.048em;font-weight:700;margin:18px 0 0 -.05em}
+.hero .row{margin-top:clamp(36px,4.7vw,60px)}
+.hero .lead{font-size:clamp(17px,1.5vw,19px);max-width:31em}
+.hero .lead+.lead{margin-top:.7em}
+.acts{flex-wrap:wrap}
+.hero .acts{margin-top:28px}
+.hero .meta{margin-top:14px}
 
-/* Numbered lists, as steps in a guide */
-ol.steps { list-style: none; padding: 0; counter-reset: s; max-width: 36em; }
-ol.steps li { counter-increment: s; display: grid; grid-template-columns: var(--step-column) 1fr; padding: 8px 0 9px; border-top: 1px solid var(--hairline); }
-ol.steps li:first-child { border-top: 0; padding-top: 0; }
-ol.steps li::before { content: counter(s); font-weight: 700; }
-.body > p { max-width: 36em; }
+/* The stance */
+.inv{background:var(--ink);color:var(--paper);margin-top:clamp(64px,7vw,96px);padding:clamp(64px,7.5vw,96px) 0 clamp(68px,8vw,104px)}
+.inv h2{font-size:clamp(38px,6.6vw,84px);line-height:.96;letter-spacing:-.045em;font-weight:700;margin-left:-.04em}
+.inv .row{margin-top:clamp(36px,4.4vw,56px)}
+.inv p{font-size:clamp(18px,1.65vw,21px);line-height:1.4;max-width:29em}
+.inv p+p{margin-top:.9em}
 
-.links { margin-top: 14px; display: grid; gap: 6px; }
-.links .small { margin-left: 8px; }
+/* Pictures of the app */
+.detail{margin-top:34px;border:1px solid var(--hair);border-radius:6px;overflow:hidden;background:#F5F4EF}
+.shot{margin-top:clamp(40px,5vw,64px);filter:drop-shadow(0 28px 34px rgba(27,27,25,.22)) drop-shadow(0 2px 5px rgba(27,27,25,.1))}
+.cards{display:grid;align-items:start;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(8px,1.2vw,16px);margin-top:34px;max-width:46em}
 
-/* Foot */
-.foot { margin-top: 96px; padding-top: 8px; border-top: 1px solid var(--hairline); font-size: var(--folio-size); color: var(--soft); }
+/* The ladder */
+.ex{background:var(--panel);margin-top:clamp(72px,8.8vw,112px);padding:clamp(48px,5.6vw,72px) 0 clamp(52px,6vw,76px)}
+.ex .rung{margin-top:clamp(28px,3.1vw,40px)}
+.ex .rung:first-of-type{margin-top:clamp(36px,4.4vw,56px)}
+.ex .label{font-size:15px;color:var(--ink);font-weight:700;padding-top:6px}
+.ex .label small{display:block;font-weight:400;color:var(--soft);font-size:13.5px;margin-top:2px}
+.ex .data{font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:clamp(17px,2vw,26px);letter-spacing:-.01em;color:var(--soft)}
+.ex .info{font-size:clamp(24px,2.5vw,32px);line-height:1.1;letter-spacing:-.025em;font-weight:700}
+.ex .mean{font-size:clamp(30px,3.6vw,46px);line-height:1.04;letter-spacing:-.035em;font-weight:700;max-width:15em}
+.ex .proof{font-size:15px;max-width:37em;border-top:1px solid var(--hair);padding-top:12px;margin-top:clamp(40px,4.4vw,56px)}
+.ex .proof span{color:var(--soft)}
 
-@media (max-width: 720px) {
-  .page { padding: 20px 16px 32px; }
-  .row { grid-template-columns: 1fr; }
-  .row > .label { padding-right: 0; }
-  .opening { margin-top: 48px; }
-  .opening h1 { font-size: 21px; }
-  .picture { margin-top: 36px; }
-  .block { margin-top: 44px; }
-  .block > .body { border-top: 0; padding-top: 6px; }
-  .opening .label { display: none; }
-  .foot { margin-top: 56px; }
+/* Numbered lists */
+.nums{margin-top:34px;max-width:36em}
+.nums>div{display:grid;grid-template-columns:34px 150px 1fr;align-items:baseline;padding:14px 0 15px;border-top:1px solid var(--hair)}
+.nums>div:first-child{border-top:1px solid var(--ink)}
+.nums small{font-size:13.5px;color:var(--soft)}
+.nums .bigt{font-size:19px;font-weight:700;letter-spacing:-.01em}
+.chip{display:inline-block;border:1px solid var(--ink);border-radius:3px;padding:3px 10px 4px;font-size:15px;font-weight:700}
+.join{display:inline-block;width:22px;height:1px;background:var(--ink);vertical-align:middle}
+.doc{margin-top:34px;max-width:36em}
+.doc>div{display:grid;grid-template-columns:34px 1fr;padding:13px 0 14px;border-top:1px solid var(--hair);font-size:clamp(17px,1.5vw,19px);line-height:1.35}
+.doc>div:first-child{border-top:1px solid var(--ink)}
+.doc span{color:var(--soft)}
+.doc span b{color:var(--ink)}
+
+.uses{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,2.8vw,36px);margin-top:30px}
+.uses div{border-top:1px solid var(--ink);padding-top:12px;font-size:clamp(22px,2.35vw,30px);line-height:1.05;letter-spacing:-.03em;font-weight:700}
+
+.steer{display:grid;grid-template-columns:38% 1fr;align-items:center;margin-top:clamp(72px,8.8vw,112px)}
+.steer .d{width:min(300px,80%)}
+.steer p{margin-top:18px}
+
+.quote{margin-top:clamp(80px,10vw,128px);border-top:1px solid var(--ink);padding-top:28px}
+.quote p{font-size:clamp(30px,4.4vw,56px);line-height:1.02;letter-spacing:-.04em;font-weight:700;max-width:17em}
+.quote small{display:block;margin-top:22px;font-size:15px;color:var(--soft)}
+
+/* Closing */
+.close{background:var(--panel);margin-top:clamp(80px,10vw,128px);padding:clamp(56px,6.9vw,88px) 0 clamp(60px,7.5vw,96px)}
+.close h2{font-size:clamp(36px,5.3vw,68px);line-height:.98;letter-spacing:-.045em;font-weight:700;max-width:12em;margin-left:-.03em}
+.close .row{margin-top:clamp(32px,3.8vw,48px);align-items:start}
+.close .acts{margin-top:26px}
+.close .meta{margin-top:14px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3.75vw,48px)}
+.blk{margin-top:clamp(64px,7.5vw,96px)}
+ol.steps{list-style:none;counter-reset:s;max-width:36em}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:30px 1fr;padding:9px 0 10px;border-top:1px solid var(--hair)}
+ol.steps li:first-child{border-top:0;padding-top:0}
+ol.steps li::before{content:counter(s);font-weight:700}
+.foot{flex-wrap:wrap;gap:8px}
+
+@media (max-width:820px){
+  .nav{gap:18px;font-size:13px}
+  .row,.steer{grid-template-columns:minmax(0,1fr)}
+  .row>.label,.ex .label{padding:0 0 8px}
+  h2.big{padding:0 0 18px}
+  .hero .row.ruled>div:first-child{border-top:0;padding-top:0;order:2;margin-top:18px}
+  .hero .row.ruled>div:last-child{order:1}
+  .uses{grid-template-columns:1fr 1fr}
+  .two{grid-template-columns:1fr}
+  .nums>div{grid-template-columns:34px 1fr}
+  .nums small{grid-column:2}
+  .nums .bigt,.nums>div>span:last-child{grid-column:2;margin-top:4px}
+  .steer .d{margin-bottom:28px}
+  .spec{grid-template-columns:1fr}
+  .spec dd{border-top:0;padding-top:0}
+  .foot span+span a{margin:0 18px 0 0}
 }
 </style>
 </head>
 <body>
-<div class="page">
 
-  <header class="strip">
-    <span class="mark"><img src="assets/mark.svg" alt="">Vibe Machine</span>
-    <span class="small soft">Early copy, for friends</span>
-  </header>
+<div class="wrap">
+<header class="bar"><span class="mark"><img src="assets/mark.svg" alt="" width="30" height="22">Vibe Machine</span><nav class="nav"><a href="https://github.com/vibe-machine/vibe-machine/releases">Releases</a><a href="https://github.com/vibe-machine/vibe-machine/issues/new/choose">Report a problem</a></nav></header>
 
-  <main>
-    <section class="row opening">
-      <div class="label"></div>
-      <div>
-        <h1>A Mac app for building software with AI agents.</h1>
-        <p class="lead">You install one app and open it. Agents do most of the work. You steer them with small decisions: which piece of work comes next, which answer is right, which result to keep.</p>
-        <div class="download">
-          <a class="button" href="https://github.com/vibe-machine/vibe-machine/releases/latest/download/VibeMachine.dmg">Download for Mac</a>
-          <p class="small soft">Apple silicon Mac · macOS 26 or later · about 350 MB</p>
-        </div>
-        <figure class="picture">
-          <img src="assets/machine.jpg" width="1400" height="623" alt="The Vibe Machine drawn as a radio front panel: a large dial with an orange pointer, and a tuning scale.">
-        </figure>
-      </div>
-    </section>
-
-    <section class="row block">
-      <h2 class="label">What you do with it</h2>
-      <div class="body">
-        <ol class="steps">
-          <li><span><b>Ask a question.</b> In Lingo Studio you ask what you want your data to answer. It builds a model of your data (an ontology) that answers the question, and the app checks the answer.</span></li>
-          <li><span><b>Build on it.</b> Plan the work, design it, and supervise the agents that write the code.</span></li>
-          <li><span><b>Show it.</b> Flex records a demo video of what you built.</span></li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="row block">
-      <h2 class="label">Install</h2>
-      <div class="body">
-        <ol class="steps">
-          <li><span>Download the disk image, <b>VibeMachine.dmg</b>, and open it.</span></li>
-          <li><span>Drag the dial into the ring on the machine. This copies the app to your Applications folder.</span></li>
-          <li><span>In Applications, open <b>One</b>. That is the Vibe Machine; the file’s name has not caught up yet.</span></li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="row block">
-      <h2 class="label">What stays on your Mac</h2>
-      <div class="body">
-        <p>The app and your data stay on your own Mac. What leaves it: requests to your AI provider, packages you publish to GitHub, and videos you upload to YouTube.</p>
-      </div>
-    </section>
-
-    <section class="row block">
-      <h2 class="label">Something wrong</h2>
-      <div class="body">
-        <p>This is an early copy and it has rough edges. Say what you saw and what you expected.</p>
-        <div class="links">
-          <div><a href="https://github.com/vibe-machine/vibe-machine/issues/new/choose">Report a problem</a><span class="small soft">Needs a GitHub account.</span></div>
-          <div><a href="https://github.com/vibe-machine/vibe-machine/releases">Earlier versions</a></div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="foot">Vibe Machines · 2026</footer>
-
+<section class="hero">
+<p class="kick">An operational store, not a reporting layer</p>
+<h1>Data that knows<br>what it means<span class="dot">.</span></h1>
+<div class="row ruled"><div class="label">Developer preview 0.1.0 · 18 November 2026</div><div>
+<p class="lead">AI just raised what one developer can attempt. Don’t spend it building yesterday’s mess faster.</p>
+<p class="lead">The Vibe Machine is an opinionated way to build applications for the age of agents. The meaning goes into the database first, and agents do the heavy lifting. On your own Mac.</p>
+<div class="acts"><a class="btn" href="https://github.com/vibe-machine/vibe-machine/releases/latest/download/VibeMachine.dmg">Download for Mac</a></div>
+<p class="meta">Mac with Apple silicon · macOS 26 or later · 310 MB</p>
+</div></div>
+</section>
 </div>
+
+<section class="inv"><div class="wrap">
+<h2>The semantic web failed.<br>Semantics didn’t.</h2>
+<div class="row"><div></div><div>
+<p>For twenty years “semantics” meant committees, standards nobody shipped and diagrams nobody ran. Developers learned to flinch at the word. Fair enough.</p>
+<p>But the idea was never wrong. Data should say what it is. The price was wrong. Getting people to agree on what things mean took a thousand meetings, so we stored the values, skipped the meaning, and built an industry to clean up after ourselves.</p>
+<p>Agents changed the price. They draft the model, argue the edge cases and write the queries. Agents don’t mind meetings.</p>
+<p><b>So we’re taking the idea back. Not for the web. For the database your software runs on.</b></p>
+</div></div>
+</div></section>
+
+<div class="wrap">
+<section class="sec"><div class="row"><h2 class="big">Meaning from the start.</h2><div>
+<p class="lede"><b>An operational ontology</b> is a working database that holds your data together with what each thing is and how things relate, exactly enough that it refuses data that does not fit. Your software and agents read and write it as they work.</p>
+<p class="lede">The best-known tools that add meaning to data arrive later, as a layer over a warehouse. This is the store itself. The Vibe Machine runs on one too.</p>
+<figure class="detail"><img src="assets/types.png" width="1132" height="572" alt="The Types screen: a type named FinancialAccount with its description, the types it is a kind of, and the questions that use it." loading="lazy"></figure>
+<p class="cap"><b>Types, read from the live store.</b> Every type says what it is, what it is a kind of, and which questions use it.</p>
+</div></div></section>
+</div>
+
+<section class="ex"><div class="wrap">
+<div class="row"><h2 class="big">From data to knowledge.</h2><p class="lede">One record, kept three ways. Each step writes down something a table leaves out.</p></div>
+<div class="row rung"><div class="label">Data<small>stored</small></div><div class="data">order 4417 · status 3 · acct 88-12</div></div>
+<div class="row rung"><div class="label">Information<small>with what it means</small></div><div class="info">A customer’s order that has shipped.</div></div>
+<div class="row rung"><div class="label">Knowledge<small>linked to everything else</small></div><div class="mean">It can be returned until 3 December. The customer has two more like it.</div></div>
+<div class="row"><div></div><p class="proof">In an independent test of 12,751 questions over 95 databases, short notes on what the data means raised correct answers from 35% to 55% for an AI model, and from 72% to 93% for people. <span>BIRD benchmark, NeurIPS 2023.</span></p></div>
+</div></section>
+
+<div class="wrap">
+<section class="sec"><div class="row"><h2 class="big">Start with a question.</h2><div>
+<p class="lede">In Lingo Studio you say what you want to ask of your data. It builds the smallest model that answers, and proves each answer with a query.</p>
+<div class="nums">
+<div><b>1</b><small>You ask</small><span class="bigt">Which feeds does a reader currently subscribe to?</span></div>
+<div><b>2</b><small>Studio builds the ontology</small><span><span class="chip">Reader</span><span class="join"></span><span class="chip">Subscription</span><span class="join"></span><span class="chip">Feed</span></span></div>
+<div><b>3</b><small>The app checks the answer</small><span class="bigt">Pass</span></div>
+</div></div></div>
+<img class='shot' src="assets/studio.png" width="2000" height="1255" alt="Lingo Studio: a model of a feed reader with eighteen concepts, each tied to the questions that need it, above the chat where you describe what you want to ask." loading="lazy">
+<p class="cap" style="margin-top:28px"><b>Lingo Studio.</b> Eighteen concepts, each tied to the questions that need it and to a shared foundation of types (gist).</p>
+</section>
+
+<section class="sec"><div class="row"><h2 class="big">Ship it as a package.</h2><div>
+<p class="lede">A finished model ships as a package: its types, what each one means, the questions it answers with their queries, and sample data. Install one and start asking.</p>
+<div class="cards"><img src="assets/pkg-gist.png" width="396" height="340" alt="The gist Upper Ontology package, installed." loading="lazy"><img src="assets/pkg-beads.png" width="396" height="340" alt="The Beads package, installed." loading="lazy"><img src="assets/pkg-lingo.png" width="396" height="340" alt="The Lingo Studio Knowledge package, installed." loading="lazy"></div>
+</div></div></section>
+
+<section class="sec"><p class="lede">With the meaning written down, you can:</p>
+<div class="uses"><div>Build apps</div><div>Coordinate agents</div><div>Give agents memory</div><div>Guide what they do</div></div></section>
+
+<section class="sec"><div class="row"><h2 class="big">Then build an app on it.</h2>
+<p class="lede">Plan the work, design it, and supervise the agents that write the code. When it works, Flex records a demo video of what you built.</p></div></section>
+
+<section class="steer"><div class="d"><svg viewBox="0 0 400 400" fill="none" stroke="#1B1B19" stroke-width="1.25" stroke-linecap="round" style="display:block;width:100%;height:auto"><path d="M81.2 318.8L65.6 334.4" stroke-width="1.6"/><path d="M64.1 298.7L54.4 305.8" stroke-width="1"/><path d="M50.3 276.3L39.6 281.7" stroke-width="1"/><path d="M40.2 251.9L28.8 255.6" stroke-width="1"/><path d="M34.1 226.3L22.2 228.2" stroke-width="1"/><path d="M32.0 200.0L10.0 200.0" stroke-width="1.6"/><path d="M34.1 173.7L22.2 171.8" stroke-width="1"/><path d="M40.2 148.1L28.8 144.4" stroke-width="1"/><path d="M50.3 123.7L39.6 118.3" stroke-width="1"/><path d="M64.1 101.3L54.4 94.2" stroke-width="1"/><path d="M81.2 81.2L65.6 65.6" stroke-width="1.6"/><path d="M101.3 64.1L94.2 54.4" stroke-width="1"/><path d="M123.7 50.3L118.3 39.6" stroke-width="1"/><path d="M148.1 40.2L144.4 28.8" stroke-width="1"/><path d="M173.7 34.1L171.8 22.2" stroke-width="1"/><path d="M200.0 32.0L200.0 10.0" stroke-width="1.6"/><path d="M226.3 34.1L228.2 22.2" stroke-width="1"/><path d="M251.9 40.2L255.6 28.8" stroke-width="1"/><path d="M276.3 50.3L281.7 39.6" stroke-width="1"/><path d="M298.7 64.1L305.8 54.4" stroke-width="1"/><path d="M318.8 81.2L334.4 65.6" stroke-width="1.6"/><path d="M335.9 101.3L345.6 94.2" stroke-width="1"/><path d="M349.7 123.7L360.4 118.3" stroke-width="1"/><path d="M359.8 148.1L371.2 144.4" stroke-width="1"/><path d="M365.9 173.7L377.8 171.8" stroke-width="1"/><path d="M368.0 200.0L390.0 200.0" stroke-width="1.6"/><path d="M365.9 226.3L377.8 228.2" stroke-width="1"/><path d="M359.8 251.9L371.2 255.6" stroke-width="1"/><path d="M349.7 276.3L360.4 281.7" stroke-width="1"/><path d="M335.9 298.7L345.6 305.8" stroke-width="1"/><path d="M318.8 318.8L334.4 334.4" stroke-width="1.6"/><circle cx="200" cy="200" r="152"/><circle cx="200" cy="200" r="142"/><circle cx="200" cy="200" r="129" stroke="none" fill="#1B1B19"/><circle cx="200" cy="200" r="112" fill="#F3F1EA"/><path d="M220.9 173.2L254.2 130.7" stroke="#1B1B19" stroke-width="8"/></svg></div><div><h2 class="big">You steer.</h2>
+<p class="lede">Agents do the work. You keep them on course, the way you keep a car in its lane: a little left, a little right. That is why the picture on this app is a dial.</p></div></section>
+
+<section class="sec"><div class="row"><h2 class="big">The doctrine.</h2><div>
+<p class="lede">We made the choices, so you can get straight to work: a strongly typed database (TypeDB), one shared foundation of types (gist), and a method that starts from your questions.</p>
+<div class="doc">
+<div><b>1</b><span><b>Meaning goes in first.</b> Not into a layer added later.</span></div>
+<div><b>2</b><span><b>Questions before models.</b> Say what it must answer. The model follows.</span></div>
+<div><b>3</b><span><b>A query proves it, or it isn’t done.</b> Every question runs. Every answer is checked.</span></div>
+<div><b>4</b><span><b>The store is the application.</b> Not a report about it.</span></div>
+<div><b>5</b><span><b>Small models beat grand ones.</b> Build what the questions need and stop.</span></div>
+<div><b>6</b><span><b>Progress beats purity.</b> Ship the model. Fix it when a question fails.</span></div>
+<div><b>7</b><span><b>Agents do the work. You steer.</b> A little left, a little right.</span></div>
+<div><b>8</b><span><b>It runs on your Mac, and it’s yours.</b> Change anything.</span></div>
+</div></div></div></section>
+
+<section class="quote"><p>“Is the store to be dumb SQL? Or is it time to level up our game and take semantics seriously?”</p>
+<small>Robert Evans, who builds the Vibe Machine</small></section>
+</div>
+
+<section class="close"><div class="wrap">
+<h2>Time to rethink how applications are built.</h2>
+<div class="row"><div><p class="lede">What we assumed was priced in human hours. The prices changed.</p>
+<div class="acts"><a class="btn" href="https://github.com/vibe-machine/vibe-machine/releases/latest/download/VibeMachine.dmg">Download for Mac</a></div>
+<p class="meta">Developer preview 0.1.0 · 18 November 2026<br>Mac with Apple silicon · macOS 26 or later · 310 MB</p></div>
+</div>
+</div></section>
+
+<div class="wrap">
+<section class="row ruled blk"><h2 class="label">Install</h2><div class="body">
+<ol class="steps">
+<li><span>Download the disk image, <b>VibeMachine.dmg</b>, and open it.</span></li>
+<li><span>Drag the dial into the ring on the machine. This copies the app to your Applications folder.</span></li>
+<li><span>In Applications, open <b>One</b>. That is the Vibe Machine; the file’s name has not caught up yet.</span></li>
+</ol></div></section>
+
+<section class="row ruled blk"><h2 class="label">Particulars</h2><div class="body">
+<dl class="spec"><dt>Version</dt><dd>0.1.0, developer preview, 18 November 2026</dd>
+<dt>Needs</dt><dd>A Mac with Apple silicon and macOS 26 or later</dd>
+<dt>Download</dt><dd>310 MB disk image, checked by Apple</dd>
+<dt>Your data</dt><dd>Stays on your Mac. What leaves it: requests to your AI provider, packages you publish, videos you upload.</dd>
+<dt>Problems</dt><dd>This is an early copy and it has rough edges. <a href="https://github.com/vibe-machine/vibe-machine/issues/new/choose">Report a problem</a> (needs a GitHub account).</dd></dl>
+</div></section>
+
+<footer class="foot"><span>Vibe Machines · 2026</span><span><a href="https://github.com/vibe-machine/vibe-machine/releases">Releases</a><a href="https://github.com/vibe-machine/vibe-machine/issues/new/choose">Report a problem</a></span></footer>
+</div>
+
 </body>
 </html>
