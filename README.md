@@ -1,6 +1,6 @@
 # The Vibe Machine
 
-A semantic engine for you and your agents. On your Mac.
+An architecture for the era of agents. What if your database could learn?
 
 **[Download](https://github.com/vibe-machine/vibe-machine/releases/latest/download/VibeMachine.dmg)**
 
