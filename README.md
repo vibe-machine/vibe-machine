@@ -1,6 +1,6 @@
 # The Vibe Machine
 
-An architecture for the era of agents. What if your database could learn?
+An architecture for the era of agents. The source of truth and the system of record for everything in your world.
 
 **[Download](https://github.com/vibe-machine/vibe-machine/releases/latest/download/VibeMachine.dmg)**
 
