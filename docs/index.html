@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<meta name="description" content="Data that knows what it means. An operational ontology on your own Mac, built with AI agents.">
+<meta name="description" content="A semantic engine for you and your agents. On your Mac.">
 <meta name="color-scheme" content="light">
 <title>The Vibe Machine</title>
 <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
@@ -156,6 +156,14 @@ ol.steps li::before{content:counter(s);font-weight:700}
   .spec dd{border-top:0;padding-top:0}
   .foot span+span a{margin:0 18px 0 0}
 }
+/* The pitch: one page */
+.pitch{margin-top:clamp(40px,5vw,64px)}
+.pitch p{font-size:clamp(18px,1.65vw,21px);line-height:1.42;max-width:31em}
+.pitch p+p{margin-top:1em}
+.pitch .ask{font-size:clamp(21px,2.2vw,28px);line-height:1.22;letter-spacing:-.02em;font-weight:700;max-width:24em;margin-top:1.3em}
+.pitch .name{font-size:clamp(34px,4.6vw,58px);line-height:1;letter-spacing:-.04em;font-weight:700;max-width:none;margin-top:.9em}
+.pitch .acts{margin-top:clamp(30px,3.4vw,44px)}
+.pitch .meta{margin-top:14px;font-size:13px;line-height:1.5;max-width:none}
 </style>
 </head>
 <body>
@@ -163,111 +171,19 @@ ol.steps li::before{content:counter(s);font-weight:700}
 <div class="wrap">
 <header class="bar"><span class="mark"><img src="assets/mark.svg" alt="" width="30" height="22">Vibe Machine</span><nav class="nav"><a href="https://github.com/vibe-machine/vibe-machine/releases">Releases</a><a href="https://discord.gg/4HjkqRRZR8">Discord</a><a href="https://github.com/vibe-machine/vibe-machine/issues/new/choose">Report a problem</a></nav></header>
 
-<section class="hero">
-<p class="kick">An operational store, not a reporting layer</p>
-<h1>Data that knows<br>what it means<span class="dot">.</span></h1>
-<div class="row ruled"><div class="label">Developer preview 0.1.0 · 18 November 2026</div><div>
-<p class="lead">AI just raised what one developer can attempt. Don’t spend it building yesterday’s mess faster.</p>
-<p class="lead">The Vibe Machine is an opinionated way to build applications for the age of agents. The meaning goes into the database first, and agents do the heavy lifting. On your own Mac.</p>
+<main class="hero">
+<p class="kick">A semantic engine for you and your agents. On your Mac.</p>
+<h1>You have a team<br>of agents now<span class="dot">.</span></h1>
+<div class="row ruled pitch"><div class="label">Developer preview 0.1.0 · 23 November 2026</div><div>
+<p>Your ambition and creativity have been unleashed.</p>
+<p>You already know agents need context to plan, build and ship. Here is what comes next: everything else needs it too. The workflows that run your app. The co-pilot inside it. The agent answering your users, the one keeping the lights on, and the one acting as your chief of staff. The analytics that tell you what to build next. Even your cost accounting.</p>
+<p>Context sounds mysterious. It isn’t. Take cost accounting: it’s a database. Context is the data you already have, handed to an agent as background.</p>
+<p class="ask">So what if there were a simple way to model all of it: your stuff, your process, your information? What if it all lived in one database? What if that database knew how everything was connected? What if it could learn?</p>
+<p class="name">That is an operational ontology.<br>That’s The Vibe Machine<span class="dot">.</span></p>
 <div class="acts"><a class="btn" href="https://github.com/vibe-machine/vibe-machine/releases/latest/download/VibeMachine.dmg">Download for Mac</a><a class="btn ghost" href="https://discord.gg/4HjkqRRZR8">Join the Discord</a></div>
-<p class="meta">Mac with Apple silicon · macOS 26 or later · 310 MB</p>
+<p class="meta">Mac with Apple silicon · macOS 26 or later · 342 MB<br>Open VibeMachine.dmg, drag the dial into the ring, then open <b>One</b> in Applications. That is the Vibe Machine; the file’s name has not caught up yet.</p>
 </div></div>
-</section>
-</div>
-
-<section class="inv"><div class="wrap">
-<h2>The semantic web failed.<br>Semantics didn’t.</h2>
-<div class="row"><div></div><div>
-<p>For twenty years “semantics” meant committees, standards nobody shipped and diagrams nobody ran. Developers learned to flinch at the word. Fair enough.</p>
-<p>But the idea was never wrong. Data should say what it is. The price was wrong. Getting people to agree on what things mean took a thousand meetings, so we stored the values, skipped the meaning, and built an industry to clean up after ourselves.</p>
-<p>Agents changed the price. They draft the model, argue the edge cases and write the queries. Agents don’t mind meetings.</p>
-<p><b>So we’re taking the idea back. Not for the web. For the database your software runs on.</b></p>
-</div></div>
-</div></section>
-
-<div class="wrap">
-<section class="sec"><div class="row"><h2 class="big">Meaning from the start.</h2><div>
-<p class="lede"><b>An operational ontology</b> is a working database that holds your data together with what each thing is and how things relate, exactly enough that it refuses data that does not fit. Your software and agents read and write it as they work.</p>
-<p class="lede">The best-known tools that add meaning to data arrive later, as a layer over a warehouse. This is the store itself. The Vibe Machine runs on one too.</p>
-<figure class="detail"><img src="assets/types.png" width="1132" height="572" alt="The Types screen: a type named FinancialAccount with its description, the types it is a kind of, and the questions that use it." loading="lazy"></figure>
-<p class="cap"><b>Types, read from the live store.</b> Every type says what it is, what it is a kind of, and which questions use it.</p>
-</div></div></section>
-</div>
-
-<section class="ex"><div class="wrap">
-<div class="row"><h2 class="big">From data to knowledge.</h2><p class="lede">One record, kept three ways. Each step writes down something a table leaves out.</p></div>
-<div class="row rung"><div class="label">Data<small>stored</small></div><div class="data">order 4417 · status 3 · acct 88-12</div></div>
-<div class="row rung"><div class="label">Information<small>with what it means</small></div><div class="info">A customer’s order that has shipped.</div></div>
-<div class="row rung"><div class="label">Knowledge<small>linked to everything else</small></div><div class="mean">It can be returned until 3 December. The customer has two more like it.</div></div>
-<div class="row"><div></div><p class="proof">In an independent test of 12,751 questions over 95 databases, short notes on what the data means raised correct answers from 35% to 55% for an AI model, and from 72% to 93% for people. <span>BIRD benchmark, NeurIPS 2023.</span></p></div>
-</div></section>
-
-<div class="wrap">
-<section class="sec"><div class="row"><h2 class="big">Start with a question.</h2><div>
-<p class="lede">In Lingo Studio you say what you want to ask of your data. It builds the smallest model that answers, and proves each answer with a query.</p>
-<div class="nums">
-<div><b>1</b><small>You ask</small><span class="bigt">Which feeds does a reader currently subscribe to?</span></div>
-<div><b>2</b><small>Studio builds the ontology</small><span><span class="chip">Reader</span><span class="join"></span><span class="chip">Subscription</span><span class="join"></span><span class="chip">Feed</span></span></div>
-<div><b>3</b><small>The app checks the answer</small><span class="bigt">Pass</span></div>
-</div></div></div>
-<img class='shot' src="assets/studio.png" width="2000" height="1255" alt="Lingo Studio: a model of a feed reader with eighteen concepts, each tied to the questions that need it, above the chat where you describe what you want to ask." loading="lazy">
-<p class="cap" style="margin-top:28px"><b>Lingo Studio.</b> Eighteen concepts, each tied to the questions that need it and to a shared foundation of types (gist).</p>
-</section>
-
-<section class="sec"><div class="row"><h2 class="big">Ship it as a package.</h2><div>
-<p class="lede">A finished model ships as a package: its types, what each one means, the questions it answers with their queries, and sample data. Install one and start asking.</p>
-<div class="cards"><img src="assets/pkg-gist.png" width="396" height="340" alt="The gist Upper Ontology package, installed." loading="lazy"><img src="assets/pkg-beads.png" width="396" height="340" alt="The Beads package, installed." loading="lazy"><img src="assets/pkg-lingo.png" width="396" height="340" alt="The Lingo Studio Knowledge package, installed." loading="lazy"></div>
-</div></div></section>
-
-<section class="sec"><p class="lede">With the meaning written down, you can:</p>
-<div class="uses"><div>Build apps</div><div>Coordinate agents</div><div>Give agents memory</div><div>Guide what they do</div></div></section>
-
-<section class="sec"><div class="row"><h2 class="big">Then build an app on it.</h2>
-<p class="lede">Plan the work, design it, and supervise the agents that write the code. When it works, Flex records a demo video of what you built.</p></div></section>
-
-<section class="steer"><div class="d"><svg viewBox="0 0 400 400" fill="none" stroke="#1B1B19" stroke-width="1.25" stroke-linecap="round" style="display:block;width:100%;height:auto"><path d="M81.2 318.8L65.6 334.4" stroke-width="1.6"/><path d="M64.1 298.7L54.4 305.8" stroke-width="1"/><path d="M50.3 276.3L39.6 281.7" stroke-width="1"/><path d="M40.2 251.9L28.8 255.6" stroke-width="1"/><path d="M34.1 226.3L22.2 228.2" stroke-width="1"/><path d="M32.0 200.0L10.0 200.0" stroke-width="1.6"/><path d="M34.1 173.7L22.2 171.8" stroke-width="1"/><path d="M40.2 148.1L28.8 144.4" stroke-width="1"/><path d="M50.3 123.7L39.6 118.3" stroke-width="1"/><path d="M64.1 101.3L54.4 94.2" stroke-width="1"/><path d="M81.2 81.2L65.6 65.6" stroke-width="1.6"/><path d="M101.3 64.1L94.2 54.4" stroke-width="1"/><path d="M123.7 50.3L118.3 39.6" stroke-width="1"/><path d="M148.1 40.2L144.4 28.8" stroke-width="1"/><path d="M173.7 34.1L171.8 22.2" stroke-width="1"/><path d="M200.0 32.0L200.0 10.0" stroke-width="1.6"/><path d="M226.3 34.1L228.2 22.2" stroke-width="1"/><path d="M251.9 40.2L255.6 28.8" stroke-width="1"/><path d="M276.3 50.3L281.7 39.6" stroke-width="1"/><path d="M298.7 64.1L305.8 54.4" stroke-width="1"/><path d="M318.8 81.2L334.4 65.6" stroke-width="1.6"/><path d="M335.9 101.3L345.6 94.2" stroke-width="1"/><path d="M349.7 123.7L360.4 118.3" stroke-width="1"/><path d="M359.8 148.1L371.2 144.4" stroke-width="1"/><path d="M365.9 173.7L377.8 171.8" stroke-width="1"/><path d="M368.0 200.0L390.0 200.0" stroke-width="1.6"/><path d="M365.9 226.3L377.8 228.2" stroke-width="1"/><path d="M359.8 251.9L371.2 255.6" stroke-width="1"/><path d="M349.7 276.3L360.4 281.7" stroke-width="1"/><path d="M335.9 298.7L345.6 305.8" stroke-width="1"/><path d="M318.8 318.8L334.4 334.4" stroke-width="1.6"/><circle cx="200" cy="200" r="152"/><circle cx="200" cy="200" r="142"/><circle cx="200" cy="200" r="129" stroke="none" fill="#1B1B19"/><circle cx="200" cy="200" r="112" fill="#F3F1EA"/><path d="M220.9 173.2L254.2 130.7" stroke="#1B1B19" stroke-width="8"/></svg></div><div><h2 class="big">You steer.</h2>
-<p class="lede">Agents do the work. You keep them on course, the way you keep a car in its lane: a little left, a little right. That is why the picture on this app is a dial.</p></div></section>
-
-<section class="sec"><div class="row"><h2 class="big">The doctrine.</h2><div>
-<p class="lede">We made the choices, so you can get straight to work: a strongly typed database (TypeDB), one shared foundation of types (gist), and a method that starts from your questions.</p>
-<div class="doc">
-<div><b>1</b><span><b>Meaning goes in first.</b> Not into a layer added later.</span></div>
-<div><b>2</b><span><b>Questions before models.</b> Say what it must answer. The model follows.</span></div>
-<div><b>3</b><span><b>A query proves it, or it isn’t done.</b> Every question runs. Every answer is checked.</span></div>
-<div><b>4</b><span><b>The store is the application.</b> Not a report about it.</span></div>
-<div><b>5</b><span><b>Small models beat grand ones.</b> Build what the questions need and stop.</span></div>
-<div><b>6</b><span><b>Progress beats purity.</b> Ship the model. Fix it when a question fails.</span></div>
-<div><b>7</b><span><b>Agents do the work. You steer.</b> A little left, a little right.</span></div>
-<div><b>8</b><span><b>It runs on your Mac, and it’s yours.</b> Change anything.</span></div>
-</div></div></div></section>
-
-<section class="quote"><p>“Is the store to be dumb SQL? Or is it time to level up our game and take semantics seriously?”</p>
-<small>Robert Evans, who builds the Vibe Machine</small></section>
-</div>
-
-<section class="close"><div class="wrap">
-<h2>Time to rethink how applications are built.</h2>
-<div class="row"><div><p class="lede">What we assumed was priced in human hours. The prices changed.</p>
-<div class="acts"><a class="btn" href="https://github.com/vibe-machine/vibe-machine/releases/latest/download/VibeMachine.dmg">Download for Mac</a><a class="btn ghost" href="https://discord.gg/4HjkqRRZR8">Join the Discord</a></div>
-<p class="meta">Developer preview 0.1.0 · 18 November 2026<br>Mac with Apple silicon · macOS 26 or later · 310 MB</p></div>
-</div>
-</div></section>
-
-<div class="wrap">
-<section class="row ruled blk"><h2 class="label">Install</h2><div class="body">
-<ol class="steps">
-<li><span>Download the disk image, <b>VibeMachine.dmg</b>, and open it.</span></li>
-<li><span>Drag the dial into the ring on the machine. This copies the app to your Applications folder.</span></li>
-<li><span>In Applications, open <b>One</b>. That is the Vibe Machine; the file’s name has not caught up yet.</span></li>
-</ol></div></section>
-
-<section class="row ruled blk"><h2 class="label">Particulars</h2><div class="body">
-<dl class="spec"><dt>Version</dt><dd>0.1.0, developer preview, 18 November 2026</dd>
-<dt>Needs</dt><dd>A Mac with Apple silicon and macOS 26 or later</dd>
-<dt>Download</dt><dd>310 MB disk image, checked by Apple</dd>
-<dt>Your data</dt><dd>Stays on your Mac. What leaves it: requests to your AI provider, packages you publish, videos you upload.</dd>
-<dt>Problems</dt><dd>This is an early copy and it has rough edges. <a href="https://github.com/vibe-machine/vibe-machine/issues/new/choose">Report a problem</a> (needs a GitHub account).</dd></dl>
-</div></section>
+</main>
 
 <footer class="foot"><span>Vibe Machines · 2026</span><span><a href="https://github.com/vibe-machine/vibe-machine/releases">Releases</a><a href="https://discord.gg/4HjkqRRZR8">Discord</a><a href="https://github.com/vibe-machine/vibe-machine/issues/new/choose">Report a problem</a></span></footer>
 </div>

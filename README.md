@@ -1,6 +1,6 @@
 # The Vibe Machine
 
-A Mac app for building software with AI agents.
+A semantic engine for you and your agents. On your Mac.
 
 **[Download](https://github.com/vibe-machine/vibe-machine/releases/latest/download/VibeMachine.dmg)**
 
