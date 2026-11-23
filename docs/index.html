@@ -156,20 +156,19 @@ ol.steps li::before{content:counter(s);font-weight:700}
   .spec dd{border-top:0;padding-top:0}
   .foot span+span a{margin:0 18px 0 0}
 }
-/* The pitch: one page */
-.pitch{margin-top:clamp(40px,5vw,64px)}
-.pitch+.pitch{margin-top:clamp(30px,3.6vw,46px)}
-.pitch>h2.label{font-size:clamp(18px,1.65vw,21px);line-height:1.25;letter-spacing:-.015em;font-weight:700;color:var(--ink);padding-right:28px}
-.pitch p,.close-pitch p{font-size:clamp(18px,1.65vw,21px);line-height:1.42;max-width:31em}
-.close-pitch{margin-top:clamp(56px,7vw,92px);border-top:1px solid var(--ink);padding-top:clamp(26px,3vw,38px)}
+/* The pitch: one page. Hierarchy by size and indent, no rules. */
+.pitch{margin-top:clamp(34px,4.2vw,54px)}
+.top+.pitch{margin-top:clamp(56px,7vw,92px)}
+.pitch>h2{font-size:clamp(22px,2.3vw,30px);line-height:1.15;letter-spacing:-.025em;font-weight:700}
+.pitch>p,.close-pitch>p{font-size:clamp(18px,1.65vw,21px);line-height:1.42;max-width:33em;margin-top:12px;padding-left:clamp(22px,3.4vw,48px)}
+.close-pitch{margin-top:clamp(56px,7vw,92px)}
 .close-pitch .name{font-size:clamp(34px,4.6vw,58px);line-height:1;letter-spacing:-.04em;font-weight:700}
-.close-pitch p{margin-top:clamp(22px,2.6vw,34px)}
-.close-pitch .sign{font-size:clamp(19px,1.9vw,24px);font-weight:700;letter-spacing:-.01em}
+.close-pitch>p{margin-top:clamp(18px,2.2vw,28px)}
+.close-pitch>.sign{font-size:clamp(19px,1.9vw,24px);font-weight:700;letter-spacing:-.01em;padding-left:0;margin-top:clamp(26px,3vw,38px)}
 .hero .kick{margin-top:clamp(40px,5.4vw,72px)}
 .hero .sub{font-size:clamp(19px,1.9vw,24px);line-height:1.34;letter-spacing:-.01em;max-width:30em;margin-top:clamp(22px,2.6vw,34px)}
 .top{margin-top:clamp(26px,3vw,38px)}
 .top .meta{margin-top:12px}
-@media (max-width:820px){.pitch>h2.label{padding:0 0 10px}.pitch>div{border-top:0;padding-top:0}}
 </style>
 </head>
 <body>
@@ -183,9 +182,9 @@ ol.steps li::before{content:counter(s);font-weight:700}
 <p class="sub">The source of truth and the system of record for everything in your world. Your coding agents run on it. Your apps run on it. Your business runs on it. That is an operational ontology. That’s The Vibe Machine.</p>
 <div class="top"><div class="acts"><a class="btn" href="https://github.com/vibe-machine/vibe-machine/releases/latest/download/VibeMachine.dmg">Download for Mac</a><a class="btn ghost" href="https://discord.gg/4HjkqRRZR8">Join the Discord</a></div>
 <p class="meta">Developer preview 0.1.0 · 23 November 2026 · Mac with Apple silicon · macOS 26 or later · 342 MB</p></div>
-<section class="row ruled pitch"><h2 class="label">Your agents don’t know what you mean.</h2><div><p>You have a team of agents now. Your ambition and creativity have been unleashed. But an agent only knows what it’s been told. You already know agents need context to plan, build and ship. Here is what comes next: everything else needs it too. The workflows that run your app. The co-pilot inside it. The agent answering your users, the one keeping the lights on, and the one acting as your chief of staff. The analytics that tell you what to build next. Even your cost accounting.</p></div></section>
-<section class="row ruled pitch"><h2 class="label">The source of truth and the system of record.</h2><div><p>Context sounds mysterious. It isn’t. Take cost accounting: it’s a database. Context is the data you already have, handed to an agent as background. So what if there were a simple way to model all of it: your stuff, your process, your information? What if it all lived in one place, not as a layer on top of your real data, but as the real data? What if it knew how everything was connected? What if it could learn?</p></div></section>
-<section class="row ruled pitch"><h2 class="label">Everything runs on it.</h2><div><p>Your coding agents run on it. The plan, the tasks and the decisions live there, so the agent that picks up the work knows what came before. Your apps run on it. It is the app’s own data, so the co-pilot inside your app means the same thing by every word as the agent that built it. Your business runs on it. Support, analytics and accounting all read from the same truth.</p></div></section>
+<section class="pitch"><h2>Your agents don’t know what you mean.</h2><p>You have a team of agents now. Your ambition and creativity have been unleashed. But an agent only knows what it’s been told. You already know agents need context to plan, build and ship. Here is what comes next: everything else needs it too. The workflows that run your app. The co-pilot inside it. The agent answering your users, the one keeping the lights on, and the one acting as your chief of staff. The analytics that tell you what to build next. Even your cost accounting.</p></section>
+<section class="pitch"><h2>The source of truth and the system of record.</h2><p>Context sounds mysterious. It isn’t. Take cost accounting: it’s a database. Context is the data you already have, handed to an agent as background. So what if there were a simple way to model all of it: your stuff, your process, your information? What if it all lived in one place, not as a layer on top of your real data, but as the real data? What if it knew how everything was connected? What if it could learn?</p></section>
+<section class="pitch"><h2>Everything runs on it.</h2><p>Your coding agents run on it. The plan, the tasks and the decisions live there, so the agent that picks up the work knows what came before. Your apps run on it. It is the app’s own data, so the co-pilot inside your app means the same thing by every word as the agent that built it. Your business runs on it. Support, analytics and accounting all read from the same truth.</p></section>
 <section class="close-pitch">
 <h2 class="name">That is an operational ontology.<br>That’s The Vibe Machine<span class="dot">.</span></h2>
 <p>An ontology says what each thing is and how things relate. Operational means it isn’t a document beside the work. It is the system of record. The Vibe Machine is a Mac app where you and your agents build one, a question at a time, and then run on it.</p>
